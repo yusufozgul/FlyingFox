@@ -39,7 +39,11 @@ struct HTTPEncoder {
                       response.statusCode.phrase].joined(separator: " ")
 
         var httpHeaders = response.headers
-        httpHeaders[.contentLength] = String(response.body?.count ?? 0)
+        
+        if !httpHeaders.keys.contains(.transferEncoding) {
+            httpHeaders[.contentLength] = String(response.body?.count ?? 0)
+        }
+        
         let headers = httpHeaders.map { "\($0.key.rawValue): \($0.value)" }
 
         return [status] + headers + ["\r\n"]

@@ -61,4 +61,5 @@ public extension HTTPHeader {
     static let webSocketKey     = HTTPHeader("Sec-WebSocket-Key")
     static let webSocketVersion = HTTPHeader("Sec-WebSocket-Version")
     static let upgrade          = HTTPHeader("Upgrade")
+    static let transferEncoding = HTTPHeader("Transfer-Encoding")
 }
